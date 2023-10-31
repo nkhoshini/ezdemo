@@ -12,7 +12,7 @@ data "aws_ami" "ec2_centos8_ami" {
   owners           = ["aws-marketplace"]
   filter {
     name   = "product-code"
-    values = ["47k9ia2igxpcce2bzo8u3kj03"]
+    values = ["9svc856m58q4n42iz9he7imlb"]
   }
 }
 
