@@ -46,6 +46,11 @@ RUN terraform init -upgrade
 WORKDIR /app/server
 RUN chmod +x *.sh */*.sh
 RUN pip install --no-cache-dir -r requirements.txt
+
+RUN pip install configparser --python-version="2.7" --target=. --no-deps
+RUN pip install configparser --python-version="2.7" --target=/usr/local/lib/python3.12/site-packages --no-deps
+RUN cp configparser.py /usr/local/lib/python3.12/
+
 # RUN apt upgrade -y
 EXPOSE 4000
 EXPOSE 8443
