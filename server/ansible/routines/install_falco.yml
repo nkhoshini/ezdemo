@@ -6,7 +6,7 @@
   - name: import falco key
     rpm_key: 
       state: present
-      key: https://falco.org/repo/falcosecurity-3672BA8F.asc
+      key: https://falco.org/repo/falcosecurity-packages.asc
     become: yes
 
   - name: add falco repo

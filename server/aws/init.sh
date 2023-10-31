@@ -27,12 +27,17 @@ set -euo pipefail
 ACCESS_KEY=$(jq '.aws_access_key' ./config.json)
 SECRET=$(jq '.aws_secret_key' ./config.json)
 REGION=$(jq -r '.region' ./config.json)
+SESSION_TOKEN=$(jq -r '.aws_session_token' ./config.json)
 
 cat > ./credentials <<EOF
 [default]
 aws_access_key_id=${ACCESS_KEY}
 aws_secret_access_key=${SECRET}
 EOF
+
+if [[ "${SESSION_TOKEN}" != "" ]]; then
+  echo "aws_session_token=${SESSION_TOKEN}" >> ./credentials
+fi
 
 if [[ "${REGION}" != "" ]]; then
   echo "region = \"${REGION}\"" >> ./my.tfvars
